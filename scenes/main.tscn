@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://deihdfjd3w3lr"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_6kltc"]
+[ext_resource type="PackedScene" uid="uid://cl275vo7n4qm0" path="res://scenes/spawner/spawner.tscn" id="1_t4rsf"]
+[ext_resource type="PackedScene" uid="uid://dga1c2mjgxua2" path="res://scenes/onigiri/onigiri.tscn" id="2_77y26"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bymk6"]
+size = Vector2(1200, 48)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_6kltc")
+onigiri_scene = ExtResource("2_77y26")
+
+[node name="Spawner" parent="." instance=ExtResource("1_t4rsf")]
+position = Vector2(576, 192)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(600, 872)
+polygon = PackedVector2Array(-600, -24, -600, 24, 600, 24, 600, -24)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D/StaticBody2D"]
+shape = SubResource("RectangleShape2D_bymk6")
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(576, 192)
+
+[connection signal="spawner_clicked" from="Spawner" to="." method="_on_spawner_spawner_clicked"]
