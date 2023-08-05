@@ -29,7 +29,7 @@ shape = SubResource("RectangleShape2D_bymk6")
 position = Vector2(576, 192)
 
 [node name="Aoi" parent="." instance=ExtResource("4_o8g35")]
-position = Vector2(640, 728)
+position = Vector2(640, 808)
 metadata/_edit_group_ = true
 
 [connection signal="spawner_clicked" from="Spawner" to="." method="_on_spawner_spawner_clicked"]
