@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxpniu7mnmhua"]
+[gd_scene load_steps=7 format=3 uid="uid://bxpniu7mnmhua"]
 
 [ext_resource type="Script" path="res://scenes/aoi/aoi.gd" id="1_0tlxh"]
 [ext_resource type="Texture2D" uid="uid://bn4ibxqpiwcmd" path="res://scenes/aoi/aoi.png" id="1_m71wv"]
@@ -75,6 +75,9 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ed6x6"]
 height = 64.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6tvw5"]
+radius = 32.0
+
 [node name="Aoi" type="CharacterBody2D"]
 script = ExtResource("1_0tlxh")
 
@@ -103,3 +106,10 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ed6x6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6tvw5")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

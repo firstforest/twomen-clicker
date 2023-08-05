@@ -3,8 +3,7 @@ extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var sprite = $Sprite2D
 
-const SPEED = 100.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 50.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -32,3 +31,8 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = false
 
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Onigiri:
+		body.queue_free()
