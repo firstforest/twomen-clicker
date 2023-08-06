@@ -9,3 +9,9 @@ func _on_spawner_spawner_job_fulfilled() -> void:
 	onigiri.position = spawn_point.position
 	onigiri.apply_central_impulse(Vector2(randf_range(-100, 100), randf_range(-200, -700)))
 	add_child(onigiri)
+
+
+func _on_upgrade_jpc_pressed() -> void:
+	if 10 <= GameState.energy.Value:
+		GameState.decrease_energy(10)
+		GameState.add_job_per_click(1)

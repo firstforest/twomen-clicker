@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://deihdfjd3w3lr"]
+[gd_scene load_steps=8 format=3 uid="uid://deihdfjd3w3lr"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_6kltc"]
 [ext_resource type="PackedScene" uid="uid://cl275vo7n4qm0" path="res://scenes/spawner/spawner.tscn" id="1_t4rsf"]
 [ext_resource type="PackedScene" uid="uid://b5e4f6tovdbvj" path="res://scenes/onigiri/onigiri.tscn" id="2_77y26"]
 [ext_resource type="PackedScene" uid="uid://bxpniu7mnmhua" path="res://scenes/aoi/aoi.tscn" id="4_o8g35"]
 [ext_resource type="PackedScene" uid="uid://b8vqxkmxtp7na" path="res://scenes/energy_label/energy_label.tscn" id="5_8shni"]
+[ext_resource type="PackedScene" uid="uid://duuths0dstaj6" path="res://scenes/debug_info/debug_info.tscn" id="6_yx5pk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bymk6"]
 size = Vector2(1200, 48)
@@ -45,4 +46,28 @@ grow_vertical = 2
 [node name="EnergyLabel" parent="VBoxContainer" instance=ExtResource("5_8shni")]
 layout_mode = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 104.0
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Upgrade JPC"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="DebugInfo" parent="MarginContainer/VBoxContainer2" instance=ExtResource("6_yx5pk")]
+layout_mode = 2
+
 [connection signal="spawner_job_fulfilled" from="Spawner" to="." method="_on_spawner_spawner_job_fulfilled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/Button" to="." method="_on_upgrade_jpc_pressed"]
