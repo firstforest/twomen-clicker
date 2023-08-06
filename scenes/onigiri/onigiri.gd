@@ -12,8 +12,8 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			_eaten_all()
 
 
-func eaten() -> void:
-	_hp -= 1
+func eaten(amount: int) -> void:
+	_hp -= amount
 	if _hp <= 0:
 		_eaten_all()
 

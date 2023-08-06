@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://xftmbhtspdbt"]
+
+[ext_resource type="Script" path="res://scenes/aoi_info/aoi_info.gd" id="1_h3ghr"]
+[ext_resource type="Texture2D" uid="uid://mspvm12huggk" path="res://icon.svg" id="2_nfxhe"]
+
+[node name="AoiInfo" type="BoxContainer" node_paths=PackedStringArray("_level_label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h3ghr")
+_level_label = NodePath("MarginContainer/VBoxContainer/LevelLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_nfxhe")
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lv: 1"
+
+[node name="LevelUpButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level Up"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LevelUpButton" to="." method="_on_level_up_button_pressed"]

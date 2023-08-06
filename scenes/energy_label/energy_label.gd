@@ -1,4 +1,4 @@
-extends Control
+extends BoxContainer
 
 @export var label: Label
 

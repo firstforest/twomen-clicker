@@ -21,7 +21,7 @@ func _ready() -> void:
 func _on_timer(_i) -> void:
 	for onigiri in _onigiris:
 		if is_instance_valid(onigiri):
-			onigiri.eaten()
+			onigiri.eaten(GameState.aoi_level.Value)
 		else:
 			_onigiris.erase(onigiri)
 
