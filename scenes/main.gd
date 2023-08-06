@@ -8,6 +8,7 @@ func _on_spawner_spawner_job_fulfilled() -> void:
 	var onigiri: Onigiri = onigiri_scene.instantiate()
 	onigiri.position = spawn_point.position
 	onigiri.apply_central_impulse(Vector2(randf_range(-100, 100), randf_range(-200, -700)))
+	onigiri.set_level(GameState.spawner_level.Value)
 	add_child(onigiri)
 
 

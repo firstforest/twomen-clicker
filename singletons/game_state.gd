@@ -5,6 +5,7 @@ var energy = _energy.to_readonly()
 
 # Spawner
 var required_job_points = ReactiveProperty.new(5.0)
+var spawner_level = ReactiveProperty.new(2)
 
 # Player
 var player_level = ReactiveProperty.new(1)
@@ -37,6 +38,11 @@ func get_job_per_click(level: int) -> int:
 # Buildings
 func buy_building_tier1():
 	building_tier1_level.Value += 1
+
+
+# Onigiri
+func get_onigiri_energy(level: int) -> int:
+	return level
 
 
 ## Other
