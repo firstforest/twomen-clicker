@@ -12,4 +12,5 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 func eaten() -> void:
 	AudioManager.play(eaten_se.resource_path)
+	GameState.add_energy(1)
 	queue_free()

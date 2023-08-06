@@ -21,7 +21,9 @@ import/import_plugin/enable_automatic_importer=true
 
 [autoload]
 
-AudioManager="*res://audio_manager.gd"
+GDRx="*res://reactivex/__gdrxsingleton__.gd"
+AudioManager="*res://singletons/audio_manager.gd"
+GameState="*res://singletons/game_state.gd"
 
 [display]
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8vqxkmxtp7na"]
+
+[ext_resource type="Script" path="res://scenes/energy_label/energy_label.gd" id="1_g4rjf"]
+
+[node name="EnergyLabel" type="Control" node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g4rjf")
+label = NodePath("CenterContainer/Label")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "Energy: 0"
