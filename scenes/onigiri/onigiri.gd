@@ -9,15 +9,19 @@ var _hp: int = 1
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed():
-			eaten()
+			_eaten_all()
 
 
 func eaten() -> void:
 	_hp -= 1
 	if _hp <= 0:
-		AudioManager.play(eaten_se.resource_path)
-		GameState.increase_energy(GameState.get_onigiri_energy(_level))
-		queue_free()
+		_eaten_all()
+
+
+func _eaten_all() -> void:
+	AudioManager.play(eaten_se.resource_path)
+	GameState.increase_energy(GameState.get_onigiri_energy(_level))
+	queue_free()
 
 
 func set_level(level: int) -> void:
