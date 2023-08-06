@@ -25,5 +25,5 @@ func set_level(level: int) -> void:
 	_hp = level * 2
 
 	var sprite: Sprite2D = $Sprite2D
-	if _level == 2:
+	if _level >= 2:
 		sprite.modulate = Color(1, 0.5, 0.5)

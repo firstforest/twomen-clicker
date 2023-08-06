@@ -24,3 +24,7 @@ func _on_buy_button_pressed() -> void:
 	if required_energy <= GameState.energy.Value:
 		GameState.decrease_energy(required_energy)
 		GameState.buy_building_tier1()
+
+
+func _on_level_up_spawner_button_pressed() -> void:
+	GameState.level_up_spawner()

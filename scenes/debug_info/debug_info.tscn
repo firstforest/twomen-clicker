@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/debug_info/debug_info.gd" id="1_7527l"]
 
-[node name="DebugInfo" type="Control" node_paths=PackedStringArray("_player_level_label", "_player_jpc_label", "_player_next_level_label")]
+[node name="DebugInfo" type="Control" node_paths=PackedStringArray("_player_level_label", "_player_jpc_label", "_player_next_level_label", "_spawner_level_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,23 +12,33 @@ offset_bottom = -680.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7527l")
-_player_level_label = NodePath("VBoxContainer/PlayerLevelLabel")
-_player_jpc_label = NodePath("VBoxContainer/JPCLabel")
-_player_next_level_label = NodePath("VBoxContainer/NextLevelLabel")
+_player_level_label = NodePath("VBoxContainer/HBoxContainer/PlayerLevelLabel")
+_player_jpc_label = NodePath("VBoxContainer/HBoxContainer/JPCLabel")
+_player_next_level_label = NodePath("VBoxContainer/HBoxContainer/NextLevelLabel")
+_spawner_level_label = NodePath("VBoxContainer/HBoxContainer2/SpawnerLevel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PlayerLevelLabel" type="Label" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerLevelLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Level: 1"
 
-[node name="JPCLabel" type="Label" parent="VBoxContainer"]
+[node name="JPCLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "JPC: 1"
 
-[node name="NextLevelLabel" type="Label" parent="VBoxContainer"]
+[node name="NextLevelLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "NEXT: 1"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SpawnerLevel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2

@@ -5,7 +5,12 @@ var energy = _energy.to_readonly()
 
 # Spawner
 var required_job_points = ReactiveProperty.new(5.0)
-var spawner_level = ReactiveProperty.new(2)
+var spawner_level = ReactiveProperty.new(1)
+
+
+func level_up_spawner() -> void:
+	spawner_level.Value += 1
+
 
 # Player
 var player_level = ReactiveProperty.new(1)
