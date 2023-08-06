@@ -26,20 +26,21 @@ onigiri_scene = ExtResource("2_77y26")
 position = Vector2(576, 192)
 metadata/_edit_group_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(600, 872)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(600, 688)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-600, -24, -600, 24, 600, 24, 600, -24)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_bymk6")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(576, 192)
 
 [node name="Aoi" parent="." instance=ExtResource("4_o8g35")]
-position = Vector2(640, 728)
+position = Vector2(608, 416)
 metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -50,9 +51,6 @@ anchor_bottom = 1.0
 offset_left = -128.0
 grow_horizontal = 0
 grow_vertical = 2
-
-[node name="EnergyLabel" parent="VBoxContainer" instance=ExtResource("5_8shni")]
-layout_mode = 2
 
 [node name="AoiInfo" parent="VBoxContainer" instance=ExtResource("6_xkvc6")]
 layout_mode = 2
@@ -96,13 +94,13 @@ position = Vector2(1264, 0)
 shape = SubResource("SegmentShape2D_k64ya")
 
 [node name="BoxContainer" type="CenterContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -58.0
+offset_right = 220.0
+offset_bottom = 58.0
+grow_vertical = 2
 
 [node name="DebugInfo" parent="BoxContainer" instance=ExtResource("6_yx5pk")]
 layout_mode = 2
@@ -111,6 +109,12 @@ metadata/_edit_group_ = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_sr3dv")
 autoplay = true
+
+[node name="EnergyLabel" parent="." instance=ExtResource("5_8shni")]
+offset_left = 600.0
+offset_top = 60.0
+offset_right = 600.0
+offset_bottom = 60.0
 
 [connection signal="spawner_job_fulfilled" from="Spawner" to="." method="_on_spawner_spawner_job_fulfilled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer2/Button" to="." method="_on_upgrade_jpc_pressed"]

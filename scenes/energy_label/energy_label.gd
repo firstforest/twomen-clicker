@@ -1,4 +1,4 @@
-extends BoxContainer
+extends Control
 
 @export var label: Label
 
@@ -8,4 +8,4 @@ func _ready() -> void:
 
 
 func _update_energy(energy: int) -> void:
-	label.text = "Energy: %5d" % energy
+	label.text = "%d" % energy
