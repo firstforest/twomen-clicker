@@ -16,3 +16,10 @@ func _on_upgrade_jpc_pressed() -> void:
 	if required_energy <= GameState.energy.Value:
 		GameState.decrease_energy(required_energy)
 		GameState.level_up()
+
+
+func _on_buy_button_pressed() -> void:
+	var required_energy = GameState.get_required_energy(GameState.building_tier1_level.Value)
+	if required_energy <= GameState.energy.Value:
+		GameState.decrease_energy(required_energy)
+		GameState.buy_building_tier1()
