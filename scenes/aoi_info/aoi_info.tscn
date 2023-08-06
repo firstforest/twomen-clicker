@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/aoi_info/aoi_info.gd" id="1_h3ghr"]
 [ext_resource type="Texture2D" uid="uid://mspvm12huggk" path="res://icon.svg" id="2_nfxhe"]
 
-[node name="AoiInfo" type="BoxContainer" node_paths=PackedStringArray("_level_label")]
+[node name="AoiInfo" type="BoxContainer" node_paths=PackedStringArray("_level_label", "_speed_label")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h3ghr")
 _level_label = NodePath("MarginContainer/VBoxContainer/LevelLabel")
+_speed_label = NodePath("MarginContainer/VBoxContainer/SpeedLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -38,4 +39,13 @@ text = "Lv: 1"
 layout_mode = 2
 text = "Level Up"
 
+[node name="SpeedLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "食事: 1秒毎"
+
+[node name="SpeedUpButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Speed Up"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/LevelUpButton" to="." method="_on_level_up_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_pressed"]

@@ -23,10 +23,15 @@ func level_up_spawner() -> void:
 
 # Chara
 var aoi_level = ReactiveProperty.new(1)
+var aoi_speed = ReactiveProperty.new(1.0)
 
 
 func level_up_aoi() -> void:
 	aoi_level.Value += 1
+
+
+func speed_up_aoi() -> void:
+	aoi_speed.Value += 1
 
 
 # Player
