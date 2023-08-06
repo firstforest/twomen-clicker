@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://xftmbhtspdbt"]
 
 [ext_resource type="Script" path="res://scenes/aoi_info/aoi_info.gd" id="1_h3ghr"]
-[ext_resource type="Texture2D" uid="uid://mspvm12huggk" path="res://icon.svg" id="2_nfxhe"]
+[ext_resource type="Texture2D" uid="uid://dw6tmxbhcxmio" path="res://scenes/aoi_info/aoi_thumbnail.png" id="2_y0xuh"]
 
 [node name="AoiInfo" type="BoxContainer" node_paths=PackedStringArray("_level_label", "_speed_label")]
 anchors_preset = 15
@@ -26,7 +26,7 @@ size_flags_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_nfxhe")
+texture = ExtResource("2_y0xuh")
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
