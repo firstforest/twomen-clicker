@@ -7,7 +7,7 @@ var energy = _energy.to_readonly()
 var required_job_points = ReactiveProperty.new(5)
 
 # Player
-var job_per_click = ReactiveProperty.new(1)
+var player_level = ReactiveProperty.new(1)
 
 
 func increase_energy(amount):
@@ -18,8 +18,16 @@ func decrease_energy(amount):
 	_energy.Value -= amount
 
 
-func add_job_per_click(amount):
-	job_per_click.Value += amount
+func level_up():
+	player_level.Value += 1
+
+
+func get_required_energy(level: int) -> int:
+	return level * 10
+
+
+func get_job_per_click(level: int) -> int:
+	return level
 
 
 func _exit_tree() -> void:

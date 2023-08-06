@@ -1,11 +1,15 @@
 extends Control
 
-@export var _job_per_click_label: Label
+@export var _player_level_label: Label
+@export var _player_jpc_label: Label
+@export var _player_next_level_label: Label
 
 
 func _ready() -> void:
-	GameState.job_per_click.subscribe(_update_jpc_label)
+	GameState.player_level.subscribe(_update_label)
 
 
-func _update_jpc_label(point: int) -> void:
-	_job_per_click_label.text = "JPC: %d" % point
+func _update_label(level) -> void:
+	_player_level_label.text = "Level: %d" % level
+	_player_jpc_label.text = "JPC: %d" % GameState.get_job_per_click(level)
+	_player_next_level_label.text = "Next: %d" % GameState.get_required_energy(level)

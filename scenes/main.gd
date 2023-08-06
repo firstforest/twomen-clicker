@@ -12,6 +12,7 @@ func _on_spawner_spawner_job_fulfilled() -> void:
 
 
 func _on_upgrade_jpc_pressed() -> void:
-	if 10 <= GameState.energy.Value:
-		GameState.decrease_energy(10)
-		GameState.add_job_per_click(1)
+	var required_energy = GameState.get_required_energy(GameState.player_level.Value)
+	if required_energy <= GameState.energy.Value:
+		GameState.decrease_energy(required_energy)
+		GameState.level_up()

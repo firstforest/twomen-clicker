@@ -13,7 +13,7 @@ func _on_input_event(_viewport, event, _shape_idx) -> void:
 		if event.is_pressed():
 			animation_player.stop(true)
 			animation_player.play("clicked")
-			_add_job_points(GameState.job_per_click.Value)
+			_add_job_points(GameState.get_job_per_click(GameState.player_level.Value))
 
 
 func _add_job_points(points) -> void:
