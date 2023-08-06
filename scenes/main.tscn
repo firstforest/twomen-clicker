@@ -45,4 +45,4 @@ grow_vertical = 2
 [node name="EnergyLabel" parent="VBoxContainer" instance=ExtResource("5_8shni")]
 layout_mode = 2
 
-[connection signal="spawner_clicked" from="Spawner" to="." method="_on_spawner_spawner_clicked"]
+[connection signal="spawner_job_fulfilled" from="Spawner" to="." method="_on_spawner_spawner_job_fulfilled"]
