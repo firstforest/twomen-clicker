@@ -9,6 +9,7 @@ script = ExtResource("1_g4rjf")
 label = NodePath("ColorRect/CenterContainer/Label")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = -60.0
 offset_top = -60.0
 offset_right = 60.0
