@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://bivca3ntvvxmc"]
+
+[ext_resource type="Script" path="res://scenes/comic_viewer/comic_viewer.gd" id="1_nk6wt"]
+[ext_resource type="Resource" uid="uid://cg2r7gq4yakue" path="res://comics/test_comic.tres" id="2_vyhbm"]
+
+[node name="ComicViewer" type="Node" node_paths=PackedStringArray("scroll_container", "page_contaner")]
+script = ExtResource("1_nk6wt")
+comic = ExtResource("2_vyhbm")
+scroll_container = NodePath("HBoxContainer/ScrollContainer")
+page_contaner = NodePath("HBoxContainer/ScrollContainer/HBoxContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -463.0
+offset_right = 100.0
+offset_bottom = 463.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="NextButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "<"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(650, 918)
+layout_mode = 2
+scroll_horizontal_custom_step = 650.0
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="PrevButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = ">"
+
+[connection signal="pressed" from="HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/PrevButton" to="." method="_on_prev_button_pressed"]
