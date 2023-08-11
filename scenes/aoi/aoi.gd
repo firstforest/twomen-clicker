@@ -11,19 +11,22 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var _direction = -1
 var _onigiris: Array[Onigiri] = []
+var _eat_timer = 0
 
 
 func _ready() -> void:
-	GDRx.start_periodic_timer(1.0).subscribe(_on_timer)
 	animation_player.play("walk")
 
 
-func _on_timer(_i) -> void:
-	for onigiri in _onigiris:
-		if is_instance_valid(onigiri):
-			onigiri.eaten()
-		else:
-			_onigiris.erase(onigiri)
+func _process(delta: float) -> void:
+	_eat_timer += delta
+	if _eat_timer >= (1/GameState.aoi_speed.Value):
+		_eat_timer = 0
+		for onigiri in _onigiris:
+			if is_instance_valid(onigiri):
+				onigiri.eaten(GameState.aoi_level.Value)
+			else:
+				_onigiris.erase(onigiri)
 
 
 func _physics_process(delta: float) -> void:

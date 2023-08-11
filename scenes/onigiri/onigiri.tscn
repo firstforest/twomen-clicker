@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5e4f6tovdbvj"]
+[gd_scene load_steps=7 format=3 uid="uid://b5e4f6tovdbvj"]
 
 [ext_resource type="Texture2D" uid="uid://bsdqenn8x17nb" path="res://scenes/onigiri/onigiri.png" id="1_4qcbu"]
 [ext_resource type="Script" path="res://scenes/onigiri/onigiri.gd" id="1_mhyko"]
 [ext_resource type="AudioStream" uid="uid://tkyuo3h0grud" path="res://scenes/onigiri/se_eaten.mp3" id="2_6bkqs"]
+[ext_resource type="PackedScene" uid="uid://cn1i5u7l3tsdv" path="res://scenes/onigiri_particle/onigiri_particle.tscn" id="3_xwftd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iw82t"]
 
@@ -12,6 +13,7 @@ radius = 14.0
 [node name="Onigiri" type="RigidBody2D"]
 script = ExtResource("1_mhyko")
 eaten_se = ExtResource("2_6bkqs")
+particle_scene = ExtResource("3_xwftd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -2)

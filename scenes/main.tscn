@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://deihdfjd3w3lr"]
+[gd_scene load_steps=13 format=3 uid="uid://deihdfjd3w3lr"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_6kltc"]
 [ext_resource type="PackedScene" uid="uid://cl275vo7n4qm0" path="res://scenes/spawner/spawner.tscn" id="1_t4rsf"]
 [ext_resource type="PackedScene" uid="uid://b5e4f6tovdbvj" path="res://scenes/onigiri/onigiri.tscn" id="2_77y26"]
 [ext_resource type="PackedScene" uid="uid://bxpniu7mnmhua" path="res://scenes/aoi/aoi.tscn" id="4_o8g35"]
 [ext_resource type="PackedScene" uid="uid://b8vqxkmxtp7na" path="res://scenes/energy_label/energy_label.tscn" id="5_8shni"]
+[ext_resource type="PackedScene" uid="uid://xftmbhtspdbt" path="res://scenes/aoi_info/aoi_info.tscn" id="6_xkvc6"]
 [ext_resource type="PackedScene" uid="uid://duuths0dstaj6" path="res://scenes/debug_info/debug_info.tscn" id="6_yx5pk"]
+[ext_resource type="AudioStream" uid="uid://gnghfuktc6p1" path="res://MusMus-BGM-003.mp3" id="8_sr3dv"]
+[ext_resource type="PackedScene" uid="uid://bivca3ntvvxmc" path="res://scenes/comic_viewer/comic_viewer.tscn" id="9_fxc55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bymk6"]
 size = Vector2(1500, 48)
@@ -19,25 +22,27 @@ b = Vector2(0, 920)
 [node name="Main" type="Node"]
 script = ExtResource("1_6kltc")
 onigiri_scene = ExtResource("2_77y26")
+ComicViewer = ExtResource("9_fxc55")
 
 [node name="Spawner" parent="." instance=ExtResource("1_t4rsf")]
 position = Vector2(576, 192)
 metadata/_edit_group_ = true
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(600, 872)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(600, 688)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-600, -24, -600, 24, 600, 24, 600, -24)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_bymk6")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(576, 192)
 
 [node name="Aoi" parent="." instance=ExtResource("4_o8g35")]
-position = Vector2(640, 728)
+position = Vector2(608, 416)
 metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -49,10 +54,10 @@ offset_left = -128.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="EnergyLabel" parent="VBoxContainer" instance=ExtResource("5_8shni")]
+[node name="AoiInfo" parent="VBoxContainer" instance=ExtResource("6_xkvc6")]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="LeftUI" type="MarginContainer" parent="."]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 104.0
@@ -62,21 +67,21 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="LeftUI"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer2"]
+[node name="Button" type="Button" parent="LeftUI/VBoxContainer2"]
 layout_mode = 2
 text = "Level Up"
 
-[node name="BuyButton" type="Button" parent="MarginContainer/VBoxContainer2"]
+[node name="BuyButton" type="Button" parent="LeftUI/VBoxContainer2"]
 layout_mode = 2
 text = "Buy"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer2"]
+[node name="HSeparator" type="HSeparator" parent="LeftUI/VBoxContainer2"]
 layout_mode = 2
 
-[node name="LevelUpSpawnerButton" type="Button" parent="MarginContainer/VBoxContainer2"]
+[node name="LevelUpSpawnerButton" type="Button" parent="LeftUI/VBoxContainer2"]
 layout_mode = 2
 text = "Lv Up Spawner"
 
@@ -91,19 +96,50 @@ position = Vector2(1264, 0)
 shape = SubResource("SegmentShape2D_k64ya")
 
 [node name="BoxContainer" type="CenterContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -58.0
+offset_right = 220.0
+offset_bottom = 58.0
+grow_vertical = 2
 
 [node name="DebugInfo" parent="BoxContainer" instance=ExtResource("6_yx5pk")]
 layout_mode = 2
 metadata/_edit_group_ = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_sr3dv")
+autoplay = true
+
+[node name="EnergyLabel" parent="." instance=ExtResource("5_8shni")]
+offset_left = 600.0
+offset_top = 60.0
+offset_right = 600.0
+offset_bottom = 60.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -72.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
 [connection signal="spawner_job_fulfilled" from="Spawner" to="." method="_on_spawner_spawner_job_fulfilled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer2/Button" to="." method="_on_upgrade_jpc_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer2/BuyButton" to="." method="_on_buy_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer2/LevelUpSpawnerButton" to="." method="_on_level_up_spawner_button_pressed"]
+[connection signal="pressed" from="LeftUI/VBoxContainer2/Button" to="." method="_on_upgrade_jpc_pressed"]
+[connection signal="pressed" from="LeftUI/VBoxContainer2/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="LeftUI/VBoxContainer2/LevelUpSpawnerButton" to="." method="_on_level_up_spawner_button_pressed"]
+[connection signal="toggled" from="MarginContainer/CheckButton" to="." method="_on_check_button_toggled"]
