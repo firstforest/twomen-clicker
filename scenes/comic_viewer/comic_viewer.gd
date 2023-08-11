@@ -1,4 +1,5 @@
 extends Node
+class_name comic_viewer
 
 enum ScrollDirection { NONE, LEFT, RIGHT }
 
@@ -6,9 +7,16 @@ enum ScrollDirection { NONE, LEFT, RIGHT }
 @export var scroll_container: ScrollContainer
 @export var page_contaner: HBoxContainer
 
+signal on_close_button_pressed
+
 var page_index: int = 0
 var animation_offset: int = 0
 var scroll_direction: ScrollDirection = ScrollDirection.NONE
+
+
+func init(c: Comic) -> comic_viewer:
+	comic = c
+	return self
 
 
 func _ready() -> void:
@@ -54,3 +62,7 @@ func _on_prev_button_pressed() -> void:
 	page_index -= 1
 	animation_offset = 650
 	scroll_direction = ScrollDirection.RIGHT
+
+
+func _on_button_pressed() -> void:
+	on_close_button_pressed.emit()

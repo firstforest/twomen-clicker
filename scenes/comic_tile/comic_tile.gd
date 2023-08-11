@@ -2,6 +2,8 @@ extends MarginContainer
 
 @export var comic: Comic
 
+signal on_pressed(comic: Comic)
+
 
 func _ready() -> void:
 	$VBoxContainer/Title.text = comic.name
@@ -12,3 +14,8 @@ func _ready() -> void:
 	image.crop(120, 120)
 	var texture = ImageTexture.create_from_image(image)
 	$VBoxContainer/TextureButton.texture_normal = texture
+
+
+func _on_texture_button_pressed() -> void:
+	print("Pressed")
+	on_pressed.emit(comic)

@@ -26,3 +26,5 @@ size_flags_horizontal = 4
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "購入(100g)"
+
+[connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

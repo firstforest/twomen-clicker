@@ -6,8 +6,8 @@
 [node name="ComicViewer" type="Node" node_paths=PackedStringArray("scroll_container", "page_contaner")]
 script = ExtResource("1_nk6wt")
 comic = ExtResource("2_vj42e")
-scroll_container = NodePath("HBoxContainer/ScrollContainer")
-page_contaner = NodePath("HBoxContainer/ScrollContainer/HBoxContainer")
+scroll_container = NodePath("HBoxContainer/ColorRect/ScrollContainer")
+page_contaner = NodePath("HBoxContainer/ColorRect/ScrollContainer/HBoxContainer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 8
@@ -29,13 +29,19 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "<"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(650, 918)
 layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/ColorRect"]
+custom_minimum_size = Vector2(650, 918)
+layout_mode = 0
+offset_right = 650.0
+offset_bottom = 926.0
 scroll_horizontal_custom_step = 650.0
 vertical_scroll_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ColorRect/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 24
 
@@ -44,5 +50,17 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = ">"
 
+[node name="Button" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.026
+offset_left = 432.0
+offset_right = 481.0
+offset_bottom = 7.08
+grow_horizontal = 2
+text = "閉じる"
+
 [connection signal="pressed" from="HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/PrevButton" to="." method="_on_prev_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

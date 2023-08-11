@@ -1,9 +1,11 @@
 extends Node
 
 @export var onigiri_scene: PackedScene
-@export var ComicViewer: PackedScene
+@export var comic_viewer: PackedScene
 @onready var spawn_point = $SpawnPoint
 @onready var overlay = $Overlay
+
+var _is_comic_viewer_shown: bool = false
 
 
 func _on_spawner_spawner_job_fulfilled() -> void:
@@ -34,6 +36,20 @@ func _on_level_up_spawner_button_pressed() -> void:
 
 func _on_check_button_toggled(button_pressed: bool) -> void:
 	if button_pressed:
-		overlay.add_child(ComicViewer.instantiate())
+		overlay.add_child(comic_viewer.instantiate())
 	else:
 		overlay.remove_child(overlay.get_child(0))
+
+
+func _on_comic_tile_on_pressed(comic: Comic) -> void:
+	if not _is_comic_viewer_shown:
+		var cv = comic_viewer.instantiate().init(comic)
+		cv.connect("on_close_button_pressed", _on_comic_viewer_close_button_pressed)
+		overlay.add_child(cv)
+		_is_comic_viewer_shown = true
+
+
+func _on_comic_viewer_close_button_pressed() -> void:
+	if _is_comic_viewer_shown:
+		overlay.remove_child(overlay.get_child(0))
+		_is_comic_viewer_shown = false

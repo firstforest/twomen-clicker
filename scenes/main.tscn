@@ -24,7 +24,7 @@ size = Vector2(1500, 48)
 [node name="Main" type="Node"]
 script = ExtResource("1_6kltc")
 onigiri_scene = ExtResource("2_77y26")
-ComicViewer = ExtResource("9_fxc55")
+comic_viewer = ExtResource("9_fxc55")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -130,10 +130,8 @@ layout_mode = 2
 metadata/_edit_group_ = true
 
 [node name="LeftUI" type="MarginContainer" parent="UI"]
-anchors_preset = 9
-anchor_bottom = 1.0
 offset_right = 139.0
-grow_vertical = 2
+offset_bottom = 133.0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 8
@@ -170,6 +168,8 @@ size_flags_vertical = 0
 layout_mode = 2
 
 [connection signal="spawner_job_fulfilled" from="Spawner" to="." method="_on_spawner_spawner_job_fulfilled"]
+[connection signal="on_pressed" from="UI/BottomUI/漫画を読む/ScrollContainer/HBoxContainer/ComicTile" to="." method="_on_comic_tile_on_pressed"]
+[connection signal="on_pressed" from="UI/BottomUI/漫画を読む/ScrollContainer/HBoxContainer/ComicTile2" to="." method="_on_comic_tile_on_pressed"]
 [connection signal="pressed" from="UI/LeftUI/VBoxContainer2/Button" to="." method="_on_upgrade_jpc_pressed"]
 [connection signal="pressed" from="UI/LeftUI/VBoxContainer2/BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="UI/LeftUI/VBoxContainer2/LevelUpSpawnerButton" to="." method="_on_level_up_spawner_button_pressed"]
