@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsf8yyaoinw1g"]
+[gd_scene load_steps=4 format=3 uid="uid://dsf8yyaoinw1g"]
 
 [ext_resource type="Script" path="res://scenes/comic_tile/comic_tile.gd" id="1_hae5d"]
 [ext_resource type="Resource" uid="uid://bwp2saroqlk56" path="res://comics/comic_unajiro.tres" id="2_q0y07"]
+[ext_resource type="AudioStream" uid="uid://dh65owars8xm" path="res://scenes/comic_tile/purchase_se.mp3" id="3_4ijhf"]
 
 [node name="ComicTile" type="MarginContainer"]
 offset_right = 200.0
@@ -10,6 +11,7 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_right = 4
 script = ExtResource("1_hae5d")
 comic = ExtResource("2_q0y07")
+purchase_se = ExtResource("3_4ijhf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -28,3 +30,4 @@ layout_mode = 2
 text = "購入(100g)"
 
 [connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

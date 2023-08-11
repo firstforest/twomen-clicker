@@ -10,3 +10,6 @@
   - スポナークリック
     - https://soundeffect-lab.info/sound/anime/
       - パパッ
+  - コミック購入
+    - https://soundeffect-lab.info/sound/various/various3.html
+      - お賽銭を投げ入れる
