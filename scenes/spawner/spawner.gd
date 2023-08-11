@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var clicked_se: AudioStream
 @onready var animation_player = $AnimationPlayer
 @onready var progress_bar = $ProgressBar
 
@@ -18,6 +19,7 @@ func _on_input_event(_viewport, event, _shape_idx) -> void:
 		if event.is_pressed():
 			animation_player.stop(true)
 			animation_player.play("clicked")
+			AudioManager.play(clicked_se.resource_path)
 			_add_job_points(GameState.get_job_per_click(GameState.player_level.Value))
 
 

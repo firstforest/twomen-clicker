@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl275vo7n4qm0"]
+[gd_scene load_steps=7 format=3 uid="uid://cl275vo7n4qm0"]
 
 [ext_resource type="Script" path="res://scenes/spawner/spawner.gd" id="1_3gvgi"]
+[ext_resource type="AudioStream" uid="uid://bgh1ixam4bpuw" path="res://scenes/spawner/clicked.mp3" id="2_6ql6q"]
 [ext_resource type="Texture2D" uid="uid://bqjuqqvo7rpic" path="res://scenes/spawner/spawner.png" id="2_rfxmi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_owx77"]
@@ -29,6 +30,7 @@ _data = {
 
 [node name="Spawner" type="Area2D"]
 script = ExtResource("1_3gvgi")
+clicked_se = ExtResource("2_6ql6q")
 
 [node name="SpawnerImage" type="Sprite2D" parent="."]
 texture = ExtResource("2_rfxmi")
