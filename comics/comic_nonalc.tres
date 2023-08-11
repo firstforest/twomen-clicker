@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Comic" load_steps=6 format=3 uid="uid://ewlqert85q00"]
+
+[ext_resource type="Texture2D" uid="uid://bppsuc6jgb2l5" path="res://comics/comic_images/twomen_matome9_025.png" id="1_6r301"]
+[ext_resource type="Texture2D" uid="uid://beicpg10c2rcv" path="res://comics/comic_images/twomen_matome9_026.png" id="2_xwe7u"]
+[ext_resource type="Texture2D" uid="uid://2i213yrcxwyi" path="res://comics/comic_images/twomen_matome9_027.png" id="3_lskhn"]
+[ext_resource type="Texture2D" uid="uid://bk7ka5m3rb7i1" path="res://comics/comic_images/twomen_matome9_028.png" id="4_lyflf"]
+[ext_resource type="Script" path="res://comics/comic.gd" id="8_x5ulj"]
+
+[resource]
+script = ExtResource("8_x5ulj")
+name = "ノンアルコール飲料を飲むだけ"
+start_page = 0
+pages = Array[Texture2D]([ExtResource("1_6r301"), ExtResource("2_xwe7u"), ExtResource("3_lskhn"), ExtResource("4_lyflf")])

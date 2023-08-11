@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsf8yyaoinw1g"]
+
+[ext_resource type="Script" path="res://scenes/comic_tile/comic_tile.gd" id="1_hae5d"]
+[ext_resource type="Resource" uid="uid://bwp2saroqlk56" path="res://comics/comic_unajiro.tres" id="2_q0y07"]
+
+[node name="ComicTile" type="MarginContainer"]
+offset_right = 200.0
+offset_bottom = 200.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+script = ExtResource("1_hae5d")
+comic = ExtResource("2_q0y07")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "購入(100g)"
