@@ -25,7 +25,7 @@ onigiri_scene = ExtResource("2_77y26")
 ComicViewer = ExtResource("9_fxc55")
 
 [node name="Spawner" parent="." instance=ExtResource("1_t4rsf")]
-position = Vector2(576, 192)
+position = Vector2(600, 200)
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -39,7 +39,7 @@ polygon = PackedVector2Array(-600, -24, -600, 24, 600, 24, 600, -24)
 shape = SubResource("RectangleShape2D_bymk6")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(576, 192)
+position = Vector2(600, 200)
 
 [node name="Aoi" parent="." instance=ExtResource("4_o8g35")]
 position = Vector2(608, 416)
