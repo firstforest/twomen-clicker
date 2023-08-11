@@ -35,6 +35,10 @@ window/size/resizable=false
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
+[gui]
+
+theme/custom_font="res://misaki_gothic.ttf"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

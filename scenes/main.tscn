@@ -91,7 +91,6 @@ grow_vertical = 0
 tab_alignment = 2
 
 [node name="漫画を読む" type="MarginContainer" parent="UI/BottomUI"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
@@ -114,6 +113,7 @@ layout_mode = 2
 comic = ExtResource("11_xhxcs")
 
 [node name="Settings" type="MarginContainer" parent="UI/BottomUI"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="UI/BottomUI/Settings"]
