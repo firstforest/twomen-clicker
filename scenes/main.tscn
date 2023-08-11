@@ -12,14 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://dsf8yyaoinw1g" path="res://scenes/comic_tile/comic_tile.tscn" id="10_51gth"]
 [ext_resource type="Resource" uid="uid://ewlqert85q00" path="res://comics/comic_nonalc.tres" id="11_xhxcs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bymk6"]
-size = Vector2(1500, 48)
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_mqop8"]
 b = Vector2(0, 920)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_k64ya"]
 b = Vector2(0, 920)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bymk6"]
+size = Vector2(1500, 48)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_6kltc")
@@ -34,6 +34,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.482353, 0.533333, 0.780392, 1)
+
+[node name="SideWall" type="StaticBody2D" parent="."]
+
+[node name="LeftWall" type="CollisionShape2D" parent="SideWall"]
+position = Vector2(-64, 0)
+shape = SubResource("SegmentShape2D_mqop8")
+
+[node name="RightWall" type="CollisionShape2D" parent="SideWall"]
+position = Vector2(1264, 0)
+shape = SubResource("SegmentShape2D_k64ya")
 
 [node name="Spawner" parent="." instance=ExtResource("1_t4rsf")]
 position = Vector2(600, 200)
@@ -56,69 +66,6 @@ position = Vector2(600, 200)
 position = Vector2(608, 416)
 metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -128.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="AoiInfo" parent="VBoxContainer" instance=ExtResource("6_xkvc6")]
-layout_mode = 2
-
-[node name="LeftUI" type="MarginContainer" parent="."]
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 104.0
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 12
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="LeftUI"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="LeftUI/VBoxContainer2"]
-layout_mode = 2
-text = "Level Up"
-
-[node name="BuyButton" type="Button" parent="LeftUI/VBoxContainer2"]
-layout_mode = 2
-text = "Buy"
-
-[node name="HSeparator" type="HSeparator" parent="LeftUI/VBoxContainer2"]
-layout_mode = 2
-
-[node name="LevelUpSpawnerButton" type="Button" parent="LeftUI/VBoxContainer2"]
-layout_mode = 2
-text = "Lv Up Spawner"
-
-[node name="SideWall" type="StaticBody2D" parent="."]
-
-[node name="LeftWall" type="CollisionShape2D" parent="SideWall"]
-position = Vector2(-64, 0)
-shape = SubResource("SegmentShape2D_mqop8")
-
-[node name="RightWall" type="CollisionShape2D" parent="SideWall"]
-position = Vector2(1264, 0)
-shape = SubResource("SegmentShape2D_k64ya")
-
-[node name="BoxContainer" type="CenterContainer" parent="."]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -58.0
-offset_right = 220.0
-offset_bottom = 58.0
-grow_vertical = 2
-
-[node name="DebugInfo" parent="BoxContainer" instance=ExtResource("6_yx5pk")]
-layout_mode = 2
-metadata/_edit_group_ = true
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_sr3dv")
 autoplay = true
@@ -131,7 +78,9 @@ offset_bottom = 60.0
 
 [node name="Overlay" type="CanvasLayer" parent="."]
 
-[node name="BottomUI" type="TabContainer" parent="."]
+[node name="UI" type="Node" parent="."]
+
+[node name="BottomUI" type="TabContainer" parent="UI"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -141,33 +90,86 @@ grow_horizontal = 2
 grow_vertical = 0
 tab_alignment = 2
 
-[node name="漫画を読む" type="MarginContainer" parent="BottomUI"]
+[node name="漫画を読む" type="MarginContainer" parent="UI/BottomUI"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BottomUI/漫画を読む"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/BottomUI/漫画を読む"]
 layout_mode = 2
 size_flags_vertical = 4
 vertical_scroll_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BottomUI/漫画を読む/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/BottomUI/漫画を読む/ScrollContainer"]
 layout_mode = 2
 
-[node name="ComicTile" parent="BottomUI/漫画を読む/ScrollContainer/HBoxContainer" instance=ExtResource("10_51gth")]
+[node name="ComicTile" parent="UI/BottomUI/漫画を読む/ScrollContainer/HBoxContainer" instance=ExtResource("10_51gth")]
 layout_mode = 2
 
-[node name="ComicTile2" parent="BottomUI/漫画を読む/ScrollContainer/HBoxContainer" instance=ExtResource("10_51gth")]
+[node name="ComicTile2" parent="UI/BottomUI/漫画を読む/ScrollContainer/HBoxContainer" instance=ExtResource("10_51gth")]
 layout_mode = 2
 comic = ExtResource("11_xhxcs")
 
-[node name="Settings" type="HBoxContainer" parent="BottomUI"]
+[node name="Settings" type="HBoxContainer" parent="UI/BottomUI"]
 visible = false
 layout_mode = 2
 
+[node name="BoxContainer" type="CenterContainer" parent="UI"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -58.0
+offset_right = 220.0
+offset_bottom = 58.0
+grow_vertical = 2
+
+[node name="DebugInfo" parent="UI/BoxContainer" instance=ExtResource("6_yx5pk")]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="LeftUI" type="MarginContainer" parent="UI"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 139.0
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/LeftUI"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UI/LeftUI/VBoxContainer2"]
+layout_mode = 2
+text = "Level Up"
+
+[node name="BuyButton" type="Button" parent="UI/LeftUI/VBoxContainer2"]
+layout_mode = 2
+text = "Buy"
+
+[node name="HSeparator" type="HSeparator" parent="UI/LeftUI/VBoxContainer2"]
+layout_mode = 2
+
+[node name="LevelUpSpawnerButton" type="Button" parent="UI/LeftUI/VBoxContainer2"]
+layout_mode = 2
+text = "Lv Up Spawner"
+
+[node name="RightUI" type="VBoxContainer" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_bottom = 290.0
+grow_horizontal = 0
+size_flags_vertical = 0
+
+[node name="AoiInfo" parent="UI/RightUI" instance=ExtResource("6_xkvc6")]
+layout_mode = 2
+
 [connection signal="spawner_job_fulfilled" from="Spawner" to="." method="_on_spawner_spawner_job_fulfilled"]
-[connection signal="pressed" from="LeftUI/VBoxContainer2/Button" to="." method="_on_upgrade_jpc_pressed"]
-[connection signal="pressed" from="LeftUI/VBoxContainer2/BuyButton" to="." method="_on_buy_button_pressed"]
-[connection signal="pressed" from="LeftUI/VBoxContainer2/LevelUpSpawnerButton" to="." method="_on_level_up_spawner_button_pressed"]
+[connection signal="pressed" from="UI/LeftUI/VBoxContainer2/Button" to="." method="_on_upgrade_jpc_pressed"]
+[connection signal="pressed" from="UI/LeftUI/VBoxContainer2/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="UI/LeftUI/VBoxContainer2/LevelUpSpawnerButton" to="." method="_on_level_up_spawner_button_pressed"]
