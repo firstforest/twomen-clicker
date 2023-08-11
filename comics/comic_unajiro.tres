@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Comic" load_steps=9 format=3 uid="uid://bwp2saroqlk56"]
+
+[ext_resource type="Texture2D" uid="uid://0yjla5qw85ln" path="res://comics/comic_images/twomen_matome9_030.png" id="1_axt2o"]
+[ext_resource type="Script" path="res://comics/comic.gd" id="1_t05nq"]
+[ext_resource type="Texture2D" uid="uid://cbxrxpcwxohse" path="res://comics/comic_images/twomen_matome9_031.png" id="2_mswp5"]
+[ext_resource type="Texture2D" uid="uid://drdkdkrtuun3e" path="res://comics/comic_images/twomen_matome9_032.png" id="3_7455l"]
+[ext_resource type="Texture2D" uid="uid://d3045h7p1w28o" path="res://comics/comic_images/twomen_matome9_033.png" id="4_64lxg"]
+[ext_resource type="Texture2D" uid="uid://bpn2nctf0xouu" path="res://comics/comic_images/twomen_matome9_034.png" id="5_ktcer"]
+[ext_resource type="Texture2D" uid="uid://cg530d6l825d8" path="res://comics/comic_images/twomen_matome9_035.png" id="6_ah4y1"]
+[ext_resource type="Texture2D" uid="uid://bpc23nou1fvmn" path="res://comics/comic_images/twomen_matome9_036.png" id="7_tc4lo"]
+
+[resource]
+script = ExtResource("1_t05nq")
+name = "うな次郎とかを食べるだけ"
+start_page = 0
+pages = Array[Texture2D]([ExtResource("1_axt2o"), ExtResource("2_mswp5"), ExtResource("3_7455l"), ExtResource("4_64lxg"), ExtResource("5_ktcer"), ExtResource("6_ah4y1"), ExtResource("7_tc4lo")])

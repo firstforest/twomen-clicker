@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bivca3ntvvxmc"]
 
 [ext_resource type="Script" path="res://scenes/comic_viewer/comic_viewer.gd" id="1_nk6wt"]
-[ext_resource type="Resource" uid="uid://cg2r7gq4yakue" path="res://comics/test_comic.tres" id="2_vyhbm"]
+[ext_resource type="Resource" uid="uid://bwp2saroqlk56" path="res://comics/comic_unajiro.tres" id="2_vj42e"]
 
 [node name="ComicViewer" type="Node" node_paths=PackedStringArray("scroll_container", "page_contaner")]
 script = ExtResource("1_nk6wt")
-comic = ExtResource("2_vyhbm")
+comic = ExtResource("2_vj42e")
 scroll_container = NodePath("HBoxContainer/ScrollContainer")
 page_contaner = NodePath("HBoxContainer/ScrollContainer/HBoxContainer")
 
